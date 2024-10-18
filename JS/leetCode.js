@@ -44,3 +44,16 @@ var satisfiesConditions = function (grid) {
 var addedInteger = function(nums1, nums2) {
     return Math.max(...nums2) - Math.max(...nums1)
 };
+
+// 14. Longest Common Prefix
+var longestCommonPrefix = function(strs) {
+    let prefix = strs[0];
+   for (let i = 1; i < strs.length; i++) {
+       while (strs[i].indexOf(prefix) !== 0) {
+           prefix = prefix.substring(0, prefix.length - 1);
+           if (prefix === "") return "";
+       }
+   }
+
+   return prefix;    
+};
