@@ -57,3 +57,20 @@ var longestCommonPrefix = function(strs) {
 
    return prefix;    
 };
+
+//3226. Number of Bit Changes to Make Two Integers Equal
+var minChanges = function (n, k) {
+    if ((n & k) !== k) {
+           return -1; 
+       }    
+       let count = 0;
+       while (n > 0) {
+           if ((n & 1) === 1 && (k & 1) === 0) {
+               count++;
+           }
+           n >>= 1;
+           k >>= 1;
+       }
+       
+       return count;
+   }
