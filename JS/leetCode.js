@@ -110,3 +110,37 @@ var isAnagram = function(s, t) {
     let b = t.split('').sort().join('')
     return a === b
  };
+
+ //290. Word Pattern
+ var wordPattern = function (pattern, s) {
+  const words = s.split(' ');
+
+  if (pattern.length !== words.length) {
+      return false;
+  }
+
+  const patternToWord = new Map();
+  const wordToPattern = new Map();
+
+  for (let i = 0; i < pattern.length; i++) {
+      const p = pattern[i];
+      const word = words[i];
+
+      if (patternToWord.has(p)) {
+          if (patternToWord.get(p) !== word) {
+              return false;
+          }
+      } else {
+          patternToWord.set(p, word);
+      }
+      if (wordToPattern.has(word)) {
+          if (wordToPattern.get(word) !== p) {
+              return false;
+          }
+      } else {
+          wordToPattern.set(word, p);
+      }
+  }
+  return true;
+};
+
