@@ -144,3 +144,38 @@ var isAnagram = function(s, t) {
   return true;
 };
 
+//3174. Clear Digits
+var clearDigits = function(s) {
+    let strArr = []
+    s.split('').map(s=> !isNaN(s) ? strArr.pop(s) : strArr.push(s))
+    return strArr.join('')
+};
+
+// 3120. Count the Number of Special Characters I
+var numberOfSpecialChars = function(word) {
+  count = 0;
+  let capitalStr = new Set();
+  let smallStr = new Set;
+  for(let i = 0; i < word.length; i++){
+      if(word[i].match(/[A-Z]/)){
+          capitalStr.add(word[i])
+      }else{
+          smallStr.add(word[i])
+      }
+  }
+  for(let x of smallStr){
+      if(capitalStr.has(x.toUpperCase())){
+          count++
+      }
+  }
+  return count
+};
+
+// 3110. Score of a String
+var scoreOfString = function (s) {
+  let sum = 0;
+  for (let i = 0; i < s.length; i++) {
+      sum += i < s.length - 1 && Math.abs(s.charCodeAt(i) - s.charCodeAt(i + 1))
+  }
+  return sum
+};
