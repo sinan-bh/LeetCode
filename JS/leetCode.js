@@ -192,3 +192,29 @@ var twoSum = function(nums, target) {
       map.set(nums[i],i)
   }
 };
+
+//3046. Split the Array
+var isPossibleToSplit = function (nums) {
+  let numss = nums.sort((a,b)=> a - b)
+  let nums2 = new Map();
+  let nums1 = new Map();
+for (let i = 0; i < numss.length; i++) {
+  if (i % 2 === 0) {
+    if (nums1.has(numss[i])) {
+      nums2.set(numss[i])
+    } else {
+      nums1.set(numss[i]);
+    }
+  } else {
+    if (nums2.has(numss[i])) {
+      nums1.set(numss[i])
+    } else {
+      nums2.set(numss[i]);
+    }
+  }
+}
+if (nums1.size === nums2.size && nums1.size === numss.length/2 ) {
+  return true
+}
+return false;
+};
