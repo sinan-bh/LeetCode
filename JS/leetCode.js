@@ -85,136 +85,170 @@ var strStr = function (haystack, needle) {
 };
 
 // 58. Length of Last Word
-var lengthOfLastWord = function(s) {
-    let t = s.trim().split(" ")
-    return t[t.length-1].length
+var lengthOfLastWord = function (s) {
+  let t = s.trim().split(" ");
+  return t[t.length - 1].length;
 };
 
 //67. Add Binary
-var addBinary = function(a, b) {
-    let c = BigInt(`0b${a}`)
-    let d = BigInt(`0b${b}`)
-    let e = c + d
-    return e.toString(2)
+var addBinary = function (a, b) {
+  let c = BigInt(`0b${a}`);
+  let d = BigInt(`0b${b}`);
+  let e = c + d;
+  return e.toString(2);
 };
 
 //125. Valid Palindrome
-var isPalindrome = function(s) {
-    let a = s.toLowerCase().replace(/[^a-z0-9]/g, '');
-    return a === a.split('').reverse().join('')
+var isPalindrome = function (s) {
+  let a = s.toLowerCase().replace(/[^a-z0-9]/g, "");
+  return a === a.split("").reverse().join("");
 };
 
 //242. Valid Anagram
-var isAnagram = function(s, t) {
-    let a = s.split('').sort().join('')
-    let b = t.split('').sort().join('')
-    return a === b
- };
+var isAnagram = function (s, t) {
+  let a = s.split("").sort().join("");
+  let b = t.split("").sort().join("");
+  return a === b;
+};
 
- //290. Word Pattern
- var wordPattern = function (pattern, s) {
-  const words = s.split(' ');
+//290. Word Pattern
+var wordPattern = function (pattern, s) {
+  const words = s.split(" ");
 
   if (pattern.length !== words.length) {
-      return false;
+    return false;
   }
 
   const patternToWord = new Map();
   const wordToPattern = new Map();
 
   for (let i = 0; i < pattern.length; i++) {
-      const p = pattern[i];
-      const word = words[i];
+    const p = pattern[i];
+    const word = words[i];
 
-      if (patternToWord.has(p)) {
-          if (patternToWord.get(p) !== word) {
-              return false;
-          }
-      } else {
-          patternToWord.set(p, word);
+    if (patternToWord.has(p)) {
+      if (patternToWord.get(p) !== word) {
+        return false;
       }
-      if (wordToPattern.has(word)) {
-          if (wordToPattern.get(word) !== p) {
-              return false;
-          }
-      } else {
-          wordToPattern.set(word, p);
+    } else {
+      patternToWord.set(p, word);
+    }
+    if (wordToPattern.has(word)) {
+      if (wordToPattern.get(word) !== p) {
+        return false;
       }
+    } else {
+      wordToPattern.set(word, p);
+    }
   }
   return true;
 };
 
 //3174. Clear Digits
-var clearDigits = function(s) {
-    let strArr = []
-    s.split('').map(s=> !isNaN(s) ? strArr.pop(s) : strArr.push(s))
-    return strArr.join('')
+var clearDigits = function (s) {
+  let strArr = [];
+  s.split("").map((s) => (!isNaN(s) ? strArr.pop(s) : strArr.push(s)));
+  return strArr.join("");
 };
 
 // 3120. Count the Number of Special Characters I
-var numberOfSpecialChars = function(word) {
+var numberOfSpecialChars = function (word) {
   count = 0;
   let capitalStr = new Set();
-  let smallStr = new Set;
-  for(let i = 0; i < word.length; i++){
-      if(word[i].match(/[A-Z]/)){
-          capitalStr.add(word[i])
-      }else{
-          smallStr.add(word[i])
-      }
+  let smallStr = new Set();
+  for (let i = 0; i < word.length; i++) {
+    if (word[i].match(/[A-Z]/)) {
+      capitalStr.add(word[i]);
+    } else {
+      smallStr.add(word[i]);
+    }
   }
-  for(let x of smallStr){
-      if(capitalStr.has(x.toUpperCase())){
-          count++
-      }
+  for (let x of smallStr) {
+    if (capitalStr.has(x.toUpperCase())) {
+      count++;
+    }
   }
-  return count
+  return count;
 };
 
 // 3110. Score of a String
 var scoreOfString = function (s) {
   let sum = 0;
   for (let i = 0; i < s.length; i++) {
-      sum += i < s.length - 1 && Math.abs(s.charCodeAt(i) - s.charCodeAt(i + 1))
+    sum += i < s.length - 1 && Math.abs(s.charCodeAt(i) - s.charCodeAt(i + 1));
   }
-  return sum
+  return sum;
 };
 
 //1. Two Sum
-var twoSum = function(nums, target) {
-  let map = new Map()
-  for(let i = 0; i < nums.length; i++){
-      let diff = target - nums[i]
-      if(map.has(diff)){
-          return [map.get(diff),i]
-      }
+var twoSum = function (nums, target) {
+  let map = new Map();
+  for (let i = 0; i < nums.length; i++) {
+    let diff = target - nums[i];
+    if (map.has(diff)) {
+      return [map.get(diff), i];
+    }
 
-      map.set(nums[i],i)
+    map.set(nums[i], i);
   }
 };
 
 //3046. Split the Array
 var isPossibleToSplit = function (nums) {
-  let numss = nums.sort((a,b)=> a - b)
+  let numss = nums.sort((a, b) => a - b);
   let nums2 = new Map();
   let nums1 = new Map();
-for (let i = 0; i < numss.length; i++) {
-  if (i % 2 === 0) {
-    if (nums1.has(numss[i])) {
-      nums2.set(numss[i])
+  for (let i = 0; i < numss.length; i++) {
+    if (i % 2 === 0) {
+      if (nums1.has(numss[i])) {
+        nums2.set(numss[i]);
+      } else {
+        nums1.set(numss[i]);
+      }
     } else {
-      nums1.set(numss[i]);
-    }
-  } else {
-    if (nums2.has(numss[i])) {
-      nums1.set(numss[i])
-    } else {
-      nums2.set(numss[i]);
+      if (nums2.has(numss[i])) {
+        nums1.set(numss[i]);
+      } else {
+        nums2.set(numss[i]);
+      }
     }
   }
-}
-if (nums1.size === nums2.size && nums1.size === numss.length/2 ) {
-  return true
-}
-return false;
+  if (nums1.size === nums2.size && nums1.size === numss.length / 2) {
+    return true;
+  }
+  return false;
+};
+
+//3042. Count Prefix and Suffix Pairs I
+var countPrefixSuffixPairs = function (words) {
+  let count = 0;
+  for (let i = 0; i < words.length; i++) {
+    for (let j = i + 1; j < words.length; j++) {
+      if (words[j].startsWith(words[i]) && words[j].endsWith(words[i])) {
+        count++;
+      }
+    }
+  }
+  return count;
+};
+
+
+//3038. Maximum Number of Operations With the Same Score I
+var maxOperations = function(nums) {
+  let operation = 0;
+  let prevSum = 0;
+  let i = 0;
+  while(i < nums.length-1){
+      let currentSum = nums[i] + nums[i + 1];
+      if( prevSum === 0){
+          prevSum = currentSum
+      }else if (currentSum === prevSum) {
+          nums.splice(i,2)
+          operation++
+          i = 0
+      }else{
+          break
+      }
+  }
+  return operation
 };
