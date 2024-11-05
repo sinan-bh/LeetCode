@@ -265,4 +265,15 @@ var isPalindrome = function (x) {
  
 };
 
-//
+//2696 Minimum String Length After Removing Substrings
+var minLength = function(s) {
+  let arr = []
+  for(let x of s){
+      if((x === 'B' && arr[arr.length - 1] === 'A' || (x === 'D' && arr[arr.length - 1] === 'C'))){
+          arr.pop()
+      } else{
+          arr.push(x)
+      }
+  }
+  return arr.length
+};
