@@ -277,3 +277,8 @@ var minLength = function(s) {
   }
   return arr.length
 };
+
+// 796. Rotate String
+var rotateString = function(s, goal) {
+  return s.length === goal.length && (s + s).includes(goal)
+};
