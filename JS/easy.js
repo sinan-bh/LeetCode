@@ -282,3 +282,15 @@ var minLength = function(s) {
 var rotateString = function(s, goal) {
   return s.length === goal.length && (s + s).includes(goal)
 };
+
+// 1957. Delete Characters to Make Fancy String
+var makeFancyString = function(s) {
+  let splited = s.split('')
+  for(let i = 0; i < splited.length; i++){
+      if(splited[i] === splited[i + 1] && splited[i + 1] === splited[i + 2]){
+          splited[i] = ''
+      }
+  }
+  return splited.join('')
+}
+
