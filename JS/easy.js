@@ -335,3 +335,27 @@ var merge = function(nums1, m, nums2, n) {
   }
   return nums1.sort((a,b)=> a - b)
 };
+
+//2788. Split Strings by Separator
+var splitWordsBySeparator = function (words, separator) {
+  let str = "";
+  let arr = [];
+  for (let i = 0; i < words.length; i++) {
+      for (let j = 0; j < words[i].length; j++) {
+          if (words[i][j] === separator) {
+              if (str !== "") {
+                  arr.push(str);
+                  str = ""
+                  continue;
+              }
+          } else {
+              str += words[i][j];
+          }
+      }
+      if (str !== "") {
+          arr.push(str);
+          str = ""
+      }
+  }
+  return arr
+};
