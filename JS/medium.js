@@ -60,3 +60,36 @@ var judgeSquareSum = function (c) {
   }
   return false;
 };
+
+// 7. Reverse Integer
+var reverse = function(x) {
+  let rev = "";
+  let a = x.toString();
+  if (x < 0) {
+      for (let i = a.length - 1; i >=1 ; i--) {            
+          rev += a[i];
+          
+      }
+  if (-(2**31) > -rev ) return 0;
+      return Number(-rev)
+  }else{
+      for (let i = a.length - 1; i >=0 ; i--) {            
+          rev += a[i];
+          
+      }
+  if ((2**31) - 1 < rev ) return 0;
+      return Number(rev)
+  }
+ 
+};
+
+// 8. String to Integer (atoi)
+let myAtoi = function(s) {    
+  const num = parseInt(s);   
+     if (num) {
+      if (num <= -(2**31))return -(2**31);
+      else if (num >= (2**31)-1)return (2**31)-1;
+      else return num;
+  }
+  return 0;
+};

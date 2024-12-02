@@ -1,10 +1,11 @@
-var plusOne = function(digits) {
-    digits[digits.length - 1] = digits[digits.length - 1] + 1
-    if(digits[digits.length - 1] > 9){
-        return digits.flatMap(num => num.toString().split('').map(Number));        
+let myAtoi = function(s) {    
+    const num = parseInt(s);   
+       if (num) {
+        if (num <= -(2**31))return -(2**31);
+        else if (num >= (2**31)-1)return (2**31)-1;
+        else return num;
     }
-    return digits
-};
-
-console.log(plusOne([3,2,2,10]));
+    return 0;
+  };
+console.log(myAtoi("1337c0d3"));
 // console.log(distanceBetweenBusStops([7,6,3,0,3],0,4));
