@@ -93,3 +93,23 @@ let myAtoi = function(s) {
   }
   return 0;
 };
+
+// 11. Container With Most Water
+var maxArea = function(height) {
+  let maxVol = 0;
+  let left = 0;
+  let right = height.length - 1
+  let vol
+  while(left < right) {        
+      vol = (Math.min(height[left], height[right]) * (right-left))
+      if(maxVol < vol) {            
+          maxVol = vol
+      }
+      if(height[left] < height[right]) {
+          left++;
+      } else {            
+          right--;
+      }
+  }
+  return maxVol
+};
