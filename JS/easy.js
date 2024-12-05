@@ -359,3 +359,16 @@ var splitWordsBySeparator = function (words, separator) {
   }
   return arr
 };
+
+
+// 1455. Check If a Word Occurs As a Prefix of Any Word in a Sentence
+ var isPrefixOfWord = function(sentence, searchWord) {
+  let s = sentence.split(" ")
+  for(let i = 0; i < s.length; i++){        
+      if(s[i].startsWith(searchWord)){
+          return i + 1
+      }
+  }
+
+  return -1
+};

@@ -1,22 +1,14 @@
-var maxArea = function(height) {
-    let maxVol = 0;
-    let left = 0;
-    let right = height.length - 1
-    let vol
-    while(left < right) {        
-        vol = (Math.min(height[left], height[right]) * (right-left))
-        if(maxVol < vol) {            
-            maxVol = vol
-        }
-        if(height[left] < height[right]) {
-            left++;
-        } else {            
-            right--;
+var isPrefixOfWord = function(sentence, searchWord) {
+    let s = sentence.split(" ")
+    for(let i = 0; i < s.length; i++){        
+        if(s[i].startsWith(searchWord)){
+            return i + 1
         }
     }
-    return maxVol
+
+    return -1
 };
-console.log(maxArea([1,8,6,2,5,4,8,3,7]));
+console.log(isPrefixOfWord("i love eating burger","burg"));
 // console.log(distanceBetweenBusStops([7,6,3,0,3],0,4));
 
 
