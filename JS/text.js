@@ -1,14 +1,24 @@
-var isPrefixOfWord = function(sentence, searchWord) {
-    let s = sentence.split(" ")
-    for(let i = 0; i < s.length; i++){        
-        if(s[i].startsWith(searchWord)){
-            return i + 1
-        }
+class ListNode {
+  constructor(val, next) {
+    this.val = val === undefined ? 0 : val;
+    this.next = next === undefined ? null : next;
+  }
+}
+
+var deleteDuplicates = function (head) {
+  let h = head;
+
+  while (h && h.next) {
+    if (h.val === h.next.val) {
+      h.next = h.next.next;
+    } else {
+      h = h.next;
     }
+  }
 
-    return -1
+  return head;
 };
-console.log(isPrefixOfWord("i love eating burger","burg"));
+
+const head = new ListNode(1, new ListNode(1, new ListNode(2)));
+console.log(deleteDuplicates(head));
 // console.log(distanceBetweenBusStops([7,6,3,0,3],0,4));
-
-
