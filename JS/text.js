@@ -1,24 +1,21 @@
-class ListNode {
-  constructor(val, next) {
-    this.val = val === undefined ? 0 : val;
-    this.next = next === undefined ? null : next;
-  }
-}
-
-var deleteDuplicates = function (head) {
-  let h = head;
-
-  while (h && h.next) {
-    if (h.val === h.next.val) {
-      h.next = h.next.next;
+var isBalanced = function (num) {
+  let a = 0;
+  let b = 0;
+  for (let i = 0; i < num.length; i++) {
+    if (i % 2 !== 0) {
+      a += Number(num[i]);
     } else {
-      h = h.next;
+      b += Number(num[i]);
     }
   }
+  console.log(a, b);
 
-  return head;
+  if (a === b) {
+    return true;
+  }
+
+  return false;
 };
-
-const head = new ListNode(1, new ListNode(1, new ListNode(2)));
-console.log(deleteDuplicates(head));
+// const head = new ListNode(1, new ListNode(1, new ListNode(2)));
+console.log(isBalanced("24123"));
 // console.log(distanceBetweenBusStops([7,6,3,0,3],0,4));
