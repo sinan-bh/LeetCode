@@ -1,33 +1,26 @@
-class ListNode {
-  constructor(val, next) {
-    this.val = val === undefined ? 0 : val;
-    this.next = next === undefined ? null : next;
+var waysToSplitArray = function(nums) {
+  let count = 0;
 
-    var mergeTwoLists = function (list1, list2) {
-      let value = new ListNode(-1);
-      let temp = value;
-      console.log(temp);
-
-      while (list1 !== null && list2 !== null) {
-        if (list1.val <= list2.val) {
-          temp.next = list1;
-          list1 = list1.next;
-        } else {
-          temp.next = list2;
-          list2 = list2.next;
-        }
-        current = current.next;
+  for(let i = 0; i < nums.length; i++){
+      let sumj = 0;
+      let sumk = 0;
+      for(let j = i; j < i + 1; j++){
+          sumj += nums[j];
       }
 
-      if (list1 !== null) temp.next = list1;
-      if (list2 !== null) temp.next = list2;
+      for(let k = nums.length - 1; k > i; k--){
+          sumk += nums[k];
+      }
+console.log(sumj, sumk);
 
-      return val.next;
-    };
-    const head = new ListNode(1, new ListNode(2, new ListNode(4)));
-    const head2 = new ListNode(1, new ListNode(3, new ListNode(4)));
-    console.log(mergeTwoLists(head, head2));
-    // console.log(distanceBetweenBusStops([7,6,3,0,3],0,4));
+      if(sumj >= sumk){
+          count++;
+      }else{
+        return count
+      }
   }
-}
-// console.log(distanceBetweenBusStops([7,6,3,0,3],0,4));
+
+  return count;
+};
+// console.log(waysToSplitArray([10,4,-8,7]));
+console.log(waysToSplitArray([2,3,1,0]));
