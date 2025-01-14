@@ -143,3 +143,24 @@ const phnRec = (i, str) => {
 phnRec(0, "")
 return res;
 };
+
+
+//2657. Find the Prefix Common Array of Two Arrays
+var findThePrefixCommonArray = function (A, B) {
+  let arr = [];
+  let count = 0;
+  let mapA = new Map();
+  let mapB = new Map();
+  for (let i = 0; i < A.length; i++) {
+      if (A[i] === B[i]) {
+          count++
+      } else {
+          if (mapA.has(B[i])) count++;
+          if (mapB.has(A[i])) count++;
+      }
+      arr.push(count);
+      mapA.set(A[i]);
+      mapB.set(B[i]);
+  }
+  return arr
+};

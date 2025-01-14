@@ -1,26 +1,23 @@
-var waysToSplitArray = function(nums) {
-  let count = 0;
+var minimumLength = function (s) {
+  if (s.length < 3) return s.length;
+  let str = "";
+  for (let i = 1; i < s.length; i++) {
+    if (s[i - 1] === s[i]) {
+      console.log("aa");
+      console.log(s.slice(1), "s");
 
-  for(let i = 0; i < nums.length; i++){
-      let sumj = 0;
-      let sumk = 0;
-      for(let j = i; j < i + 1; j++){
-          sumj += nums[j];
-      }
+      let a = s.slice(1);
+      console.log("ddddd", a);
 
-      for(let k = nums.length - 1; k > i; k--){
-          sumk += nums[k];
-      }
-console.log(sumj, sumk);
-
-      if(sumj >= sumk){
-          count++;
-      }else{
-        return count
-      }
+      console.log(a.slice(-1),"--");
+      str = a.slice(i, i + 1);
+      
+      console.log(str);
+      
+    }
   }
 
-  return count;
+  return str.length;
 };
 // console.log(waysToSplitArray([10,4,-8,7]));
-console.log(waysToSplitArray([2,3,1,0]));
+console.log(minimumLength("abaacbcbb"));
