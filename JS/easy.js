@@ -390,3 +390,21 @@ var majorityElement = function (nums) {
   }
   return n;
 };
+
+
+// 219. Contains Duplicate II
+var containsNearbyDuplicate = function(nums, k) {
+  let map = new Map();
+  for(let i = 0; i < nums.length; i++){
+      if(map.has(nums[i])){
+          let a = map.get(nums[i])
+          if(i - a <= k){
+              return true
+          }
+      }
+
+      map.set(nums[i], i)
+  }
+      return false
+
+};
