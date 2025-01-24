@@ -408,3 +408,22 @@ var containsNearbyDuplicate = function(nums, k) {
       return false
 
 };
+
+// 66. Plus One
+var plusOne = function(digits) {
+  let join = digits.join("")
+  let sum = BigInt(join) + BigInt(1)
+  return sum.toString().split("").map(n=> Number(n))
+};
+
+// 3019. Number of Changing Keys
+var countKeyChanges = function(s) {
+  let count = 0;
+
+  for(let i = s.length - 1; i > 0; i--){
+      if(s[i].toUpperCase() !== s[i - 1].toUpperCase()){
+          count++
+      }
+  }
+  return count
+};
