@@ -164,3 +164,23 @@ var findThePrefixCommonArray = function (A, B) {
   }
   return arr
 };
+
+
+// 2161. Partition Array According to Given Pivot
+var pivotArray = function(nums, pivot) {
+  let lp = [];
+  let gp = [];
+  let eq = [];
+
+  for(let i = 0; i < nums.length; i++){
+      if(nums[i] < pivot){
+          lp.push(nums[i]);
+      }else if(nums[i] > pivot){
+          gp.push(nums[i])
+      }else{
+          eq.push(nums[i])
+      }
+  }
+
+  return [...lp,...eq,...gp];
+};
